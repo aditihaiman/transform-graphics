@@ -1,6 +1,7 @@
 from display import *
 from draw import *
 from matrix import *
+from parses import *
 import math
 import random
 

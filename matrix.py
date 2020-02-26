@@ -9,10 +9,25 @@ z0  z1  ... zn
 """
 import math
 
+def make_translate( x, y, z ):
+    pass
+
+def make_scale( x, y, z ):
+    pass
+
+def make_rotX( theta ):
+    pass
+
+def make_rotY( theta ):
+    pass
+
+def make_rotZ( theta ):
+    pass
+
 #print the matrix such that it looks like
 #the template in the top comment
 def print_matrix( matrix ):
-    for x in range(4):
+    for x in range(len(matrix[0])):
         line = ""
         for y in range(len(matrix)):
             if(matrix[y][x]//10 == 0): line += str(matrix[y][x]) + "   "
@@ -32,15 +47,15 @@ def ident( matrix ):
 #multiply m1 by m2, modifying m2 to be the product
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
-    m21 = []
-    copy(m2, m21)
-    for x in range(len(m2[0])):
-        for y in range(len(m1)): #for each col in m1
-            sum = 0
-            for z in range(len(m2)):
-                sum += m1[z][x] * m21[y][z]
-                #print(sum)
-            m2[y][x] = sum
+    point = 0
+    for row in m2:
+        tmp = row[:]
+        for r in range(4):
+            m2[point][r] = (m1[0][r] * tmp[0] +
+                            m1[1][r] * tmp[1] +
+                            m1[2][r] * tmp[2] +
+                            m1[3][r] * tmp[3])
+        point+= 1
 
 def new_matrix(rows = 4, cols = 4):
     m = []
