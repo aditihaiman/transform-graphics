@@ -37,10 +37,12 @@ matrix_mult(make_translate(200, 200, 200), transform)
 
 
 matrix_mult(transform, edges)
-draw_lines(edges, screen, color)
+#draw_lines(edges, screen, color)
+
+parse_file("script", edges, transform, screen, color)
 
 
-display(screen)
+#display(screen)
 #save_ppm(screen, 'binary.ppm')
 #save_ppm_ascii(screen, 'ascii.ppm')
 #save_extension(screen, 'img.png')
