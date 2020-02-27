@@ -25,7 +25,7 @@ def make_rotX( theta ):
 def make_rotY( theta ):
     theta = theta * math.pi / 180.0
     return [[math.cos(theta), 0, -1*math.sin(theta), 0],
-            [0, 1, 0],
+            [0, 1, 0, 0],
             [math.sin(theta), 0, math.cos(theta), 0],
             [0, 0, 0, 1]]
 

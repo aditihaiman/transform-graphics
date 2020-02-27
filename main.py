@@ -8,7 +8,10 @@ import random
 screen = new_screen()
 color = [ 255, 255, 255 ]
 edges = []
-transform = ident(new_matrix())
+transform = [[1, 0, 0, 0],
+             [0, 1, 0, 0],
+             [0, 0, 1, 0],
+             [0, 0, 0, 1]]
 
 add_edge(edges, 0, 0, 0, 100, 0, 0)
 add_edge(edges, 100, 0, 0, 100, 100, 0)
@@ -23,16 +26,13 @@ add_edge(edges, 0, 100, 0, 0, 100, 100)
 add_edge(edges, 100, 100, 0, 100, 100, 100)
 add_edge(edges, 100, 0, 0, 100, 0, 100)
 
-transform = make_scale(2, 2, 2)
-print_matrix(transform)
-print("\n")
-draw_lines(edges, screen, color)
+matrix_mult(make_scale(2, 2, 2), transform)
 
-matrix_mult(make_rotZ(45), transform)
-#print_matrix(transform)
-#print("\n")
-matrix_mult(make_translate(50, 50, 50), transform)
-print_matrix(transform)
+matrix_mult(make_rotX(30), transform)
+
+matrix_mult(make_rotY(30), transform)
+
+matrix_mult(make_translate(200, 200, 200), transform)
 
 
 
