@@ -12,31 +12,31 @@ transform = [[1, 0, 0, 0],
              [0, 1, 0, 0],
              [0, 0, 1, 0],
              [0, 0, 0, 1]]
-
-add_edge(edges, 0, 0, 0, 100, 0, 0)
-add_edge(edges, 100, 0, 0, 100, 100, 0)
-add_edge(edges, 100, 100, 0, 0, 100, 0)
-add_edge(edges, 0, 100, 0, 0, 0, 0)
-add_edge(edges, 0, 0, 100, 100, 0, 100)
-add_edge(edges, 100, 0, 100, 100, 100, 100)
-add_edge(edges, 100, 100, 100, 0, 100, 100)
-add_edge(edges, 0, 100, 100, 0, 0, 100)
-add_edge(edges, 0, 0, 0, 0, 0, 100)
-add_edge(edges, 0, 100, 0, 0, 100, 100)
-add_edge(edges, 100, 100, 0, 100, 100, 100)
-add_edge(edges, 100, 0, 0, 100, 0, 100)
-
-matrix_mult(make_scale(2, 2, 2), transform)
-
-matrix_mult(make_rotX(30), transform)
-
-matrix_mult(make_rotY(30), transform)
-
-matrix_mult(make_translate(200, 200, 200), transform)
-
-
-
-matrix_mult(transform, edges)
+#
+#add_edge(edges, 0, 0, 0, 100, 0, 0)
+#add_edge(edges, 100, 0, 0, 100, 100, 0)
+#add_edge(edges, 100, 100, 0, 0, 100, 0)
+#add_edge(edges, 0, 100, 0, 0, 0, 0)
+#add_edge(edges, 0, 0, 100, 100, 0, 100)
+#add_edge(edges, 100, 0, 100, 100, 100, 100)
+#add_edge(edges, 100, 100, 100, 0, 100, 100)
+#add_edge(edges, 0, 100, 100, 0, 0, 100)
+#add_edge(edges, 0, 0, 0, 0, 0, 100)
+#add_edge(edges, 0, 100, 0, 0, 100, 100)
+#add_edge(edges, 100, 100, 0, 100, 100, 100)
+#add_edge(edges, 100, 0, 0, 100, 0, 100)
+#
+#matrix_mult(make_scale(2, 2, 2), transform)
+#
+#matrix_mult(make_rotX(30), transform)
+#
+#matrix_mult(make_rotY(30), transform)
+#
+#matrix_mult(make_translate(200, 200, 200), transform)
+#
+#
+#
+#matrix_mult(transform, edges)
 #draw_lines(edges, screen, color)
 
 parse_file("script", edges, transform, screen, color)

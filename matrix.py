@@ -15,6 +15,11 @@ def make_translate( x, y, z ):
 def make_scale( x, y, z ):
     return [[x, 0, 0, 0],[0, y, 0, 0],[0, 0, z, 0],[0, 0, 0, 1]]
 
+def make_rot(axis, theta):
+    if(axis=='x'): return make_rotX(theta)
+    elif(axis=='y'): return make_rotY(theta)
+    else: return make_rotZ(theta)
+
 def make_rotX( theta ):
     theta = theta * math.pi / 180.0
     return [[1, 0, 0, 0],

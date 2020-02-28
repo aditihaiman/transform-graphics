@@ -38,8 +38,29 @@ def parse_file( fname, points, transform, screen, color ):
     x = 0
     while(x < len(lines)):
         line = lines[x].split(" ")
-        print(line)
-        
+        line2 = []
+        if(x < len(lines)): line2 = lines[x+1].split(" ")
+        if(line[0] == 'line'):
+            print(lines[x+1])
+            add_edge(points, line2[0], line2[1], line2[2], line2[3], line2[4], line2[5])
+        elif(line[0] == 'ident'):
+            ident(transform)
+        elif(line[0] == 'scale'):
+            matrix_mult(make_scale(line2[0], line2[1], line2[2]), transform)
+        elif(line[0] == 'translate'):
+            matrix_mult(make_translate(line2[0], line2[1], line2[2]), transform)
+        elif(line[0] == 'rotate'):
+            matrix_mult(make_rot(line2[0], line2[1]), transform)
+        elif(line[0] == 'apply'):
+            matrix_mult(transform, points)
+        elif(line[0] == 'display'):
+            clear_screen(screen)
+            draw_lines(points, screen, color)
+            display(screen)
+        elif(line[0] == 'save'):
+            clear_screen(screen)
+            draw_lines(points, screen, color)
+            save_extension(screen, line2[0])
         x = x + 1
     
     
