@@ -14,7 +14,7 @@ The file follows the following format:
          scale: create a scale matrix,
                 then multiply the transform matrix by the scale matrix -
                 takes 3 arguments (sx, sy, sz)
-         translate: create a translation matrix,
+         move: create a translation matrix,
                     then multiply the transform matrix by the translation matrix -
                     takes 3 arguments (tx, ty, tz)
          rotate: create a rotation matrix,
@@ -31,7 +31,7 @@ The file follows the following format:
          quit: end parsing
 See the file script for an example of the file format
 """
-def parse_file( fname, points, transform, screen, color ):
+def parse_file( fname, pofloats, transform, screen, color ):
     f = open(fname, 'r')
     file = f.read()
     lines = file.split("\n")
@@ -42,31 +42,31 @@ def parse_file( fname, points, transform, screen, color ):
         if(x+1 < len(lines)): line2 = lines[x+1].split(" ")
         
         if(line[0] == 'line'):
-            add_edge(points, int(line2[0]), int(line2[1]), int(line2[2]), int(line2[3]), int(line2[4]), int(line2[5]))
+            add_edge(pofloats, float(line2[0]), float(line2[1]), float(line2[2]), float(line2[3]), float(line2[4]), float(line2[5]))
         
         elif(line[0] == 'ident'):
             ident(transform)
         
         elif(line[0] == 'scale'):
-            matrix_mult(make_scale(int(line2[0]), int(line2[1]), int(line2[2])), transform)
+            matrix_mult(make_scale(float(line2[0]), float(line2[1]), float(line2[2])), transform)
         
         elif(line[0] == 'move'):
-            matrix_mult(make_translate(int(line2[0]), int(line2[1]), int(line2[2])), transform)
+            matrix_mult(make_translate(float(line2[0]), float(line2[1]), float(line2[2])), transform)
         
         elif(line[0] == 'rotate'):
-            matrix_mult(make_rot(line2[0], int(line2[1])), transform)
+            matrix_mult(make_rot(line2[0], float(line2[1])), transform)
         
         elif(line[0] == 'apply'):
-            matrix_mult(transform, points)
+            matrix_mult(transform, pofloats)
         
         elif(line[0] == 'display'):
             clear_screen(screen)
-            draw_lines(points, screen, color)
+            draw_lines(pofloats, screen, color)
             display(screen)
         
         elif(line[0] == 'save'):
             clear_screen(screen)
-            draw_lines(points, screen, color)
+            draw_lines(pofloats, screen, color)
             save_extension(screen, line2[0])
         
         x = x + 1
