@@ -6,7 +6,7 @@ import math
 import random
 
 screen = new_screen()
-color = [ 255, 255, 255 ]
+color = [ 0, 0, 0 ]
 edges = []
 transform = [[1, 0, 0, 0],
              [0, 1, 0, 0],
